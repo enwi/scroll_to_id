@@ -29,53 +29,73 @@ class ScrollToId {
 
   /// This function is to scroll with animation.
   /// The first argument is id(String), not height(double).
-  Future<void> animateTo(String id,
-      {required Duration duration, required Curve curve}) async {
+  Future<void> animateTo(
+    String id, {
+    required Duration duration,
+    required Curve curve,
+    double extraOffset = 0,
+  }) async {
     Function _function = (double offset) {
-      scrollController!.animateTo(offset, duration: duration, curve: curve);
+      scrollController!
+          .animateTo(offset + extraOffset, duration: duration, curve: curve);
     };
     _scroll(id: id, scrollFunction: _function);
   }
 
   /// This function is to jump.
   /// The first argument is id(String), not size(double).
-  Future<void> jumpTo(String id) async {
+  Future<void> jumpTo(
+    String id, {
+    double extraOffset = 0,
+  }) async {
     Function _function = (double offset) {
-      scrollController!.jumpTo(offset);
+      scrollController!.jumpTo(offset + extraOffset);
     };
     _scroll(id: id, scrollFunction: _function);
   }
 
   /// This function is to scroll to next id with animation.
-  Future<void> animateToNext(
-      {required Duration duration, required Curve curve}) async {
+  Future<void> animateToNext({
+    required Duration duration,
+    required Curve curve,
+    double extraOffset = 0,
+  }) async {
     Function _function = (double offset) {
-      scrollController!.animateTo(offset, duration: duration, curve: curve);
+      scrollController!
+          .animateTo(offset + extraOffset, duration: duration, curve: curve);
     };
     _scroll(id: _getNextId(number: 1), scrollFunction: _function);
   }
 
   /// This function is to jump to next id.
-  Future<void> jumpToNext() async {
+  Future<void> jumpToNext({
+    double extraOffset = 0,
+  }) async {
     Function _function = (double offset) {
-      scrollController!.jumpTo(offset);
+      scrollController!.jumpTo(offset + extraOffset);
     };
     _scroll(id: _getNextId(number: 1), scrollFunction: _function);
   }
 
   /// This function is to scroll to before id with animation.
-  Future<void> animateToBefore(
-      {required Duration duration, required Curve curve}) async {
+  Future<void> animateToBefore({
+    required Duration duration,
+    required Curve curve,
+    double extraOffset = 0,
+  }) async {
     Function _function = (double offset) {
-      scrollController!.animateTo(offset, duration: duration, curve: curve);
+      scrollController!
+          .animateTo(offset + extraOffset, duration: duration, curve: curve);
     };
     _scroll(id: _getNextId(number: -1), scrollFunction: _function);
   }
 
   /// This function is to jump to before id.
-  Future<void> jumpToBefore() async {
+  Future<void> jumpToBefore({
+    double extraOffset = 0,
+  }) async {
     Function _function = (double offset) {
-      scrollController!.jumpTo(offset);
+      scrollController!.jumpTo(offset + extraOffset);
     };
     _scroll(id: _getNextId(number: -1), scrollFunction: _function);
   }
